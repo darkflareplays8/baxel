@@ -1,0 +1,177 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+  position: relative; /* Ensures overlay is positioned correctly */
+}
+
+
+body::before {
+  content: ""; /* Empty content to apply the background */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(8px); /* Apply blur effect to the background */
+  z-index: -1; /* Put it behind the content */
+}
+
+header {
+  background: url('images/headerbackground.png') no-repeat center center;
+  background-size: cover;
+  padding: 1rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 2; /* Ensure header stays above the sidebar when sidebar is not active */
+}
+
+.hamburger {
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  z-index: 3;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  height: 4px;
+  background: white;
+  margin: 5px 0;
+  border-radius: 2px;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 250px;
+  height: 100%;
+  background: url('images/sidebarbackground.png') no-repeat center center;
+  background-size: cover;
+  color: white;
+  padding: 1rem;
+  transition: left 0.3s ease;
+  z-index: 1; /* Sidebar now has a lower z-index by default */
+  box-sizing: border-box;
+}
+
+#sidebar.active {
+  left: 0;
+  z-index: 3; /* Sidebar moves on top of the header when active */
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sidebar ul li {
+  margin: 1rem 0;
+}
+
+#sidebar ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  padding: 1rem;
+  background: url('images/mainbackground.png') no-repeat center center;
+  background-size: cover;
+  height: calc(100% - 80px);
+  z-index: 2; /* Ensures main content stays above the blurred background */
+}
+
+/* Overlay that appears behind the sidebar */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  z-index: 2; /* Overlay should be below the sidebar */
+}
+
+/* Close button inside the sidebar */
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  float: right;
+  margin-bottom: 1rem;
+}
+
+.submenu {
+  display: none;
+  padding-left: 1rem;
+}
+
+.expandable > a {
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+}
+
+.expandable.open .arrow {
+  transform: rotate(90deg);
+}
+
+.expandable.open .submenu {
+  display: block;
+}
+
+.submenu-divider {
+  display: none; /* Initially hide the separator */
+  border: 0;
+  border-top: 1px solid white;
+  margin: 1rem 0;
+}
+
+.expandable.open .submenu-divider {
+  display: block; /* Show the separator when the submenu is expanded */
+}
+
+.arrow {
+  width: 20px; /* Size of the arrow */
+  height: 20px; /* Size of the arrow */
+  margin-left: 5px; /* Space between the text and the arrow */
+  vertical-align: middle;
+}
+
+a {
+  color: white;         /* Inherit the color from the parent element */
+  text-decoration: none;  /* Remove underline */
+}
+
+a:visited {
+  color: white;         /* Prevent purple for visited links */
+}
+
+a:hover {
+  color: blue;         /* Keep hover color unchanged (optional) */
+}
+
+a:active {
+  color: inherit;         /* Prevent red when active */
+}
