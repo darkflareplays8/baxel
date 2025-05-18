@@ -6,7 +6,6 @@
   <title>Baxel: Home</title>
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/images/favicon.ico" />
-
 </head>
 <body>
   <header>
@@ -19,31 +18,7 @@
   </header>
 
   <div id="overlay" onclick="closeSidebar()"></div>
-
-  <aside id="sidebar">
-    <button class="close-btn" onclick="closeSidebar()">×</button>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="https://m.twitch.tv/baxelorbaxel" target="_blank">Twitch <img src="/images/twitch-icon.png" class="arrow"></a> </li>
-      <li><a href="https://youtube.com/@baxelorbaxel" target="_blank">Youtube <img src="/images/youtube-icon.png" class="arrow"></a></li>
-      <li><a href="https://discord.gg/nG7uf8mmpg" target="_blank"> Discord Server <img src="/images/discord-icon.png" class="arrow"></a></li>
-      <li><a href="/videos">Videos <img src="/images/youtube-icon.png" class="arrow"></a>
-      <li class="expandable">
-        <a href="javascript:void(0)">Minecraft <img src="/images/arrow-icon.png" class="arrow"/></a>
-        <ul class="submenu">
-          <li><a href="/mc">How To Join</a></li>
-          <li><a href="mc/vc" >VC</a></li>
-          <li><a href="#" style="color: #B2BEB5;">Coming Soon...</a></li>
-        </ul>
-        <hr class="submenu-divider" />
-      </li>
-    </ul>
-    <ul>
-    <li><a href="https://discord.com/users/1343244701507260416" target="_blank"> Site Creator's Profile <img src="/images/discord-icon.png" class="arrow"></a></li>
-    <li><a href="https://ko-fi.com/darkflareplays8" target="_blank" >Ko-fi Page<img src="/images/ko-fi-icon.png" class="arrow"></a></li>
-    <li><a href="https://github.com/oogisgod/baxel/tree/main" target="_blank">Site Source Code <img src="images/github-icon.png" class="arrow"></a></li>
-    </ul>
-  </aside>
+  <div id="sidebar-placeholder"></div>
 
   <main>
     <h2>Welcome to the homepage of baxelorbaxel's website!</h2>
@@ -68,7 +43,6 @@
       document.getElementById('sidebar').classList.add('active');
       document.getElementById('overlay').style.display = 'block';
 
-      // Show the Ko-fi button
       const kofi = document.getElementById('kofi-widget-overlay');
       if (kofi) kofi.style.display = 'block';
     }
@@ -77,20 +51,11 @@
       document.getElementById('sidebar').classList.remove('active');
       document.getElementById('overlay').style.display = 'none';
 
-      // Hide the Ko-fi button
       const kofi = document.getElementById('kofi-widget-overlay');
       if (kofi) kofi.style.display = 'none';
     }
-
-    // Submenu toggle
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.expandable > a').forEach(link => {
-        link.addEventListener('click', e => {
-          e.preventDefault();
-          link.parentElement.classList.toggle('open');
-        });
-      });
-    });
   </script>
+
+  <script src="/sidebar-loader.js" defer></script>
 </body>
 </html>
