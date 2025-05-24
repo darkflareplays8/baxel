@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baxel: MC Link Guide</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="/images/favicon.ico" />
+</head>
+<body>
+  <header>
+    <div class="hamburger" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <h1><a href="/">Baxel</a></h1>
+  </header>
+
+  <div id="overlay" onclick="closeSidebar()"></div>
+  <div id="sidebar-placeholder"></div>
+
+  <main>
+    <h2>How to Link</h2>
+    <video width="640" height="360" controls style="display: block; margin: 0 auto;">
+     <source src="/images/java-join.mp4" type="video/mp4">
+     Your browser does not support the video tag.
+    </video>
+    <ul>
+      <li>1. Launch java and press multiplayer,</li>
+      <li>2. Click add server,</li>
+      <li>3. In the ip box, put baxelmc.play.hosting,</li>
+      <li>4. Have fun!</li>
+    </ul>
+  </main>
+
+  <!-- Load Ko-fi widget ONCE -->
+  <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      kofiWidgetOverlay.draw('darkflareplays8', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Donate',
+        'floating-chat.donateButton.background-color': '#f45d22',
+        'floating-chat.donateButton.text-color': '#fff'
+      });
+    });
+  </script>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.add('active');
+      document.getElementById('overlay').style.display = 'block';
+
+      const kofi = document.getElementById('kofi-widget-overlay');
+      if (kofi) kofi.style.display = 'block';
+    }
+
+    function closeSidebar() {
+      document.getElementById('sidebar').classList.remove('active');
+      document.getElementById('overlay').style.display = 'none';
+
+      const kofi = document.getElementById('kofi-widget-overlay');
+      if (kofi) kofi.style.display = 'none';
+    }
+  </script>
+
+  <script src="/sidebar-loader.js" defer></script>
+</body>
+</html>
