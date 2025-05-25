@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Baxel: MC Economy</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="/images/favicon.ico" />
+</head>
+<body>
+  <header>
+    <div class="hamburger" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <h1><a href="/">Baxel</a></h1>
+  </header>
+
+  <div id="overlay" onclick="closeSidebar()"></div>
+  <div id="sidebar-placeholder"></div>
+
+  <main>
+    <h2>Baxel MC Economy Guide</h2>
+    <p style="text-align: center;">Commands</p>
+    <ul>
+       <li>/balance - Shows how much money you have.</li>
+       <li>/shop - Opens the GUI which lets you buy items.</li>
+       <li>/sell- Opens the GUI which lets you sell items.</li>
+    </ul>
+  </main>
+
+  <!-- Load Ko-fi widget ONCE -->
+  <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      kofiWidgetOverlay.draw('darkflareplays8', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Donate',
+        'floating-chat.donateButton.background-color': '#f45d22',
+        'floating-chat.donateButton.text-color': '#fff'
+      });
+    });
+  </script>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.add('active');
+      document.getElementById('overlay').style.display = 'block';
+
+      const kofi = document.getElementById('kofi-widget-overlay');
+      if (kofi) kofi.style.display = 'block';
+    }
+
+    function closeSidebar() {
+      document.getElementById('sidebar').classList.remove('active');
+      document.getElementById('overlay').style.display = 'none';
+
+      const kofi = document.getElementById('kofi-widget-overlay');
+      if (kofi) kofi.style.display = 'none';
+    }
+  </script>
+
+  <script src="/sidebar-loader.js" defer></script>
+</body>
+</html>
